@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-md-6">
+
+        <hr>
+        <div ng-repeat="branch in branches">
+            <div class="panel panel-default" ng-hide="editing" >
+                <div class="panel-heading">
+                    <a ng-click="viewBranch(branch.id)" style="cursor: pointer;">{{branch.name}}</a>
+                </div>
+                <div class="panel-body">
+                    {{branch.content}}
+                </div>
+                <div class="pull-right">
+                    <button type="button" class="btn btn-danger btn-xs" ng-click="deleteBranch(branch.id, $index)">Удалить</button>
+                    <button type="button" class="btn btn-primary btn-xs" ng-click="editing = true">Редактировать</button>
+                </div>
+
+
+            </div>
+            <br>
+
+
+            <form class="form-horizontal" role="form" ng-show="editing" ng-submit="editing = false">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Название</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" ng-model="branch.name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Контент</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="3" ng-model="branch.content"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default" ng-click="updateBranch(branch)">Сохранить</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <hr>
+        <div class="col-md-6">
+            <button class="btn btn-success btn-block" ng-click="create = true">Создать новую тему</button>
+            <hr>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-primary btn-block" ng-click="viewHome()">На главную</button>
+            <hr>
+        </div>
+
+        <form class="form-horizontal" role="form" ng-show="create" ng-submit="create = false">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Название</label>
+                <div class="col-sm-10">
+                    <input class="form-control" ng-model="name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Контент</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="3" ng-model="content"></textarea>
+                    <!--<input class="form-control" ng-model="content">-->
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default" ng-click="CreateBranch()">Создать</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
